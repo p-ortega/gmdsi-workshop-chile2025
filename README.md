@@ -19,10 +19,45 @@ Club Providencia, Av. Pocuro 2878.
 This workshop consists of jupyter notebooks that use pyemu and pestpp to run all the good stuff from uncertainty analysis to optimization managemnt. This repository is self contained, meaning that all dependencies are included here and you should not needed to install anything else. We encourage everyone to clone this repository and install the environment using:
 
 
-Este taller está compuesto por Jupyter Notebooks que utilizan PyeMU y pestpp para realizar desde análisis de incertidumbre hasta optimización automatica (terrible de bkn).
+Este taller está compuesto por Jupyter Notebooks que utilizan [PyEMU](https://github.com/pypest/pyemu) y [PEST++](https://github.com/usgs/pestpp) para realizar desde análisis de incertidumbre hasta optimización automatica (terrible de bkn).
 El repositorio es selfcontained, lo que significa que todas las dependencias necesarias se encuentran incluidas y no será necesario instalar nada adicional (incluso tenemos los ejecutables de modflow). Se recomienda a todos los participantes clonar este repositorio e instalar el environment:
 
 ```bash
 conda env create -f environment.yml
 
 conda activate gmdsi_tut
+```
+
+## Schedule
+### Day 1: Concepts, Theory and Experiences                                                         
+
+| Time            | Topic                                                                           | Lead(s)         |
+|-----------------|---------------------------------------------------------------------------------|-----------------|
+| 9:00 - 10:00    | Overview and intros:                                                            | All             |
+| 10:00 - 10:45   | Intro to Uncertainty: Bayes and learning from data                              | JW              |
+| 10:45 - 11:00   | Coffee break                                                                    |                 |
+| 11:00 - 11:45   | Uncertainty in groundwater modelling: sources, importance, mitigation           | EdS             |
+| 11:45 - 12:30   | Heterogeneity: geostatistics, pilot points, uncertainty, parsimony fallacy      | PO              |
+| 12:30 - 13:30   | Lunch break                                                                     |                 |
+| 13:30 - 14:15   | Reducing uncertainty: inverse problems, GLM, ensemble methods, applied examples | JW, PO, CV      |
+| 14:15 - 15:00   | The value of data: data worth, ensemble variance, applied example               | EdS             |
+| 15:00 - 15:15   | Coffee break                                                                    |                 |
+| 15:15 - 16:15   | Management optimization & hydroeconomics                                        | JW, PO, EdS     |
+| 16:15 - 17:00   | Data-driven modeling & Emulation: theory and applied example                    | JW, PO          |
+
+### Day 2: Hands-on Practice with Decision Support Modelling Software                                               
+
+| Time            | Topic                                                                                                   | Lead(s)         |
+|-----------------|---------------------------------------------------------------------------------------------------------|-----------------|
+| 9:00 - 10:00    | Modeling discussion and IT support: problem decomposition, workflows, UA results, model types           | All             |
+| 10:00 - 10:45   | GUIs and scripting: overview, workflow, automation, versioning, coder lifestyle                         | PO, JW          |
+| 10:45 - 11:00   | Coffee break                                                                                            |                 |
+| 11:00 - 11:45   | Introduce synthetic case & model: Freyberg history, model building                                      | JW              |
+| 11:45 - 12:30   | PESTPP the hard way: control/template/instruction files, high-dim problems, hands-on                    | EdS, RH         |
+| 12:30 - 13:30   | Lunch break                                                                                             |                 |
+| 13:30 - 14:15   | How to run pestpp: command line, troubleshooting, parallelization, hands-on                             | EdS             |
+| 14:15 - 15:00   | Live demo pyemu: PstFrom, pilot points, geostatistics, prior                                            | PO              |
+| 15:00 - 15:15   | Coffee break                                                                                            |                 |
+| 15:15 - 16:00   | History matching & UA with pestpp-ies: notebook, obs noise, parallel run, post-process, hands-on        | JW              |
+| 16:00 - 16:45   | Optimization with pestpp-opt/pestpp-mou: decision variables, objectives, constraints                    | JW              |
+| 16:45 - 17:30   | Set up your own emulator: obs setup, training, pypestworker                                             | PO              |
