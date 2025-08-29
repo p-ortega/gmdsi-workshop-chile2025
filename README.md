@@ -31,33 +31,33 @@ conda activate gmdsi_tut
 ## Schedule
 ### Day 1: Concepts, Theory and Experiences                                                         
 
-| Time            | Topic                                                                           | Lead(s)         |
-|-----------------|---------------------------------------------------------------------------------|-----------------|
-| 9:00 - 10:00    | Overview and intros:                                                            | All             |
-| 10:00 - 10:45   | Intro to Uncertainty: Bayes and learning from data                              | JW              |
-| 10:45 - 11:00   | Coffee break                                                                    |                 |
-| 11:00 - 11:45   | Uncertainty in groundwater modelling: sources, importance, mitigation           | EdS             |
-| 11:45 - 12:30   | Heterogeneity: geostatistics, pilot points, uncertainty, parsimony fallacy      | PO              |
-| 12:30 - 13:30   | Lunch break                                                                     |                 |
-| 13:30 - 14:15   | Reducing uncertainty: inverse problems, GLM, ensemble methods, applied examples | JW, PO, CV      |
-| 14:15 - 15:00   | The value of data: data worth, ensemble variance, applied example               | EdS             |
-| 15:00 - 15:15   | Coffee break                                                                    |                 |
-| 15:15 - 16:15   | Management optimization & hydroeconomics                                        | JW, PO, EdS     |
-| 16:15 - 17:00   | Data-driven modeling & Emulation: theory and applied example                    | JW, PO          |
+| Time | Topic                                                                           | Lead(s)         |
+|------|---------------------------------------------------------------------------------|-----------------|
+| 9:00 | Overview and intros:                                                            | All             |
+| 10:00| Intro to Uncertainty: Bayes and learning from data                              | JW              |
+| 10:45| Coffee break                                                                    |                 |
+| 11:00| Uncertainty in groundwater modelling: sources, importance, mitigation           | EdS             |
+| 11:45| Heterogeneity: geostatistics, pilot points, uncertainty, parsimony fallacy      | PO              |
+| 12:30| Lunch break                                                                     |                 |
+| 13:30| Reducing uncertainty: inverse problems, GLM, ensemble methods, applied examples | JW, PO, CV      |
+| 14:15| The value of data: data worth, ensemble variance, applied example               | EdS             |
+| 15:00| Coffee break                                                                    |                 |
+| 15:15| Management optimization & hydroeconomics                                        | JW, PO, EdS     |
+| 16:15| Data-driven modeling & Emulation: theory and applied example                    | JW, PO          |
 
 ### Day 2: Hands-on Practice with Decision Support Modelling Software                                               
 
-| Time            | Topic                                                                                                   | Lead(s)         |
-|-----------------|---------------------------------------------------------------------------------------------------------|-----------------|
-| 9:00 - 10:00    | Modeling discussion and IT support: problem decomposition, workflows, UA results, model types           | All             |
-| 10:00 - 10:45   | GUIs and scripting: overview, workflow, automation, versioning, coder lifestyle                         | PO, JW          |
-| 10:45 - 11:00   | Coffee break                                                                                            |                 |
-| 11:00 - 11:45   | Introduce synthetic case & model: Freyberg history, model building                                      | JW              |
-| 11:45 - 12:30   | PESTPP the hard way: control/template/instruction files, high-dim problems, hands-on                    | EdS, RH         |
-| 12:30 - 13:30   | Lunch break                                                                                             |                 |
-| 13:30 - 14:15   | How to run pestpp: command line, troubleshooting, parallelization, hands-on                             | EdS             |
-| 14:15 - 15:00   | Live demo pyemu: PstFrom, pilot points, geostatistics, prior                                            | PO              |
-| 15:00 - 15:15   | Coffee break                                                                                            |                 |
-| 15:15 - 16:00   | History matching & UA with pestpp-ies: notebook, obs noise, parallel run, post-process, hands-on        | JW              |
-| 16:00 - 16:45   | Optimization with pestpp-opt/pestpp-mou: decision variables, objectives, constraints                    | JW              |
-| 16:45 - 17:30   | Set up your own emulator: obs setup, training, pypestworker                                             | PO              |
+| Time  | Topic                                                                                                   | Lead(s)         |
+|-------|---------------------------------------------------------------------------------------------------------|-----------------|
+| 9:00  | Modeling discussion and IT support: problem decomposition, workflows, UA results, model types           | All             |
+| 10:00 | GUIs and scripting: overview, workflow, automation, versioning, coder lifestyle                         | PO, JW          |
+| 10:45 | Coffee break                                                                                            |                 |
+| 11:00 | Introduce synthetic case & model: Freyberg history, model building                                      | JW              |
+| 11:45 | PESTPP the hard way: control/template/instruction files, high-dim problems, hands-on                    | EdS, RH         |
+| 12:30 | Lunch break                                                                                             |                 |
+| 13:30 | How to run pestpp: command line, troubleshooting, parallelization, hands-on                             | EdS             |
+| 14:15 | Live demo pyemu: PstFrom, pilot points, geostatistics, prior                                            | PO              |
+| 15:00 | Coffee break                                                                                            |                 |
+| 15:15 | History matching & UA with pestpp-ies: notebook, obs noise, parallel run, post-process, hands-on        | JW              |
+| 16:00 | Optimization with pestpp-opt/pestpp-mou: decision variables, objectives, constraints                    | JW              |
+| 16:45 | Set up your own emulator: obs setup, training, pypestworker                                             | PO              |
