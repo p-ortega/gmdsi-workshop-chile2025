@@ -8,6 +8,9 @@ Materials and tutorials for the GMDSI Predictive Modeling Workshop in Santiago, 
 
 # Location
 Club Providencia, Av. Pocuro 2878.
+[View on Google Maps](https://maps.app.goo.gl/hDKMge5gjs2Khn8a9)
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6381.873477142874!2d-70.59469492251274!3d-33.43176557339686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf0c1277e025%3A0xc5e46a0fa6fc5d0a!2sClub%20Providencia!5e1!3m2!1sen!2sau!4v1756443793910!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ## MCs
 - Jeremy White
