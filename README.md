@@ -1,7 +1,7 @@
 ![Chile Banner](assets/chile_banner.jpg)
 
 # Theory and Practice of Applied Predictive Groundwater Modeling
-Materials and tutorials for the GMDIS Predictive Modeling Workshop in Santiago, 2025.
+Materials and tutorials for the GMDSI Predictive Modeling Workshop in Santiago, 2025.
 
 # Dates
 8-9 September 2025, 9am-6pm
