@@ -13,63 +13,53 @@ import sys
 import pyemu
 import flopy
 
-def prep_forecasts(pst, model_times=False):
-    pred_csv = os.path.join('..', '..', 'models', 'daily_freyberg_mf6_truth',"pred_data.csv")
-    assert os.path.exists(pred_csv)
-    pred_data = pd.read_csv(pred_csv)
-    pred_data.set_index('site', inplace=True)
-    
-    if type(model_times) == bool:
-        model_times = [float(i) for i in pst.observation_data.time.unique()]
-        
-    ess_obs_data = {}
-    for site in pred_data.index.unique().values:
-        site_obs_data = pred_data.loc[site,:].copy()
-        if isinstance(site_obs_data, pd.Series):
-            site_obs_data.loc["site"] = site_obs_data.index.values
-        if isinstance(site_obs_data, pd.DataFrame):
-            site_obs_data.loc[:,"site"] = site_obs_data.index.values
-            site_obs_data.index = site_obs_data.time
-            sm = site_obs_data.value.rolling(window=20,center=True,min_periods=1).mean()
-            sm_site_obs_data = sm.reindex(model_times,method="nearest")
-        #ess_obs_data.append(pd.DataFrame9sm_site_obs_data)
-        ess_obs_data[site] = sm_site_obs_data
-    obs_data = pd.DataFrame(ess_obs_data)
+def test_extract_hds_arrays(d):
+    """
+    Test the extraction of head data arrays.
+    """
+    cwd = os.getcwd()
+    os.chdir(d)
+    extract_hds_arrays_and_list_dfs()
+    os.chdir(cwd)
 
-    obs = pst.observation_data
-    obs_names = [o for o in pst.obs_names if o not in pst.nnz_obs_names]
+def process_secondary_obs(ws='.'):
+    """
+    Process secondary observation files.
+    """
+    def write_tdif_obs(orgf, newf, ws='.'):
+        df = pd.read_csv(os.path.join(ws,orgf), index_col='time')
+        df = df - df.iloc[0, :]
+        df.to_csv(os.path.join(ws,newf))
+        return
 
-    # get list of times for obs name suffixes
-    time_str = obs_data.index.map(lambda x: f"time:{x}").values
-    # empyt list to keep track of missing observation names
-    missing=[]
-    for col in obs_data.columns:
-        if col.lower()=='part_time':
-            obs_sufix = col.lower()
-        else:
-        # get obs list suffix for each column of data
-            obs_sufix = col.lower()+"_"+time_str
-        if type(obs_sufix)==str:
-            obs_sufix=[obs_sufix]
+    # write the tdiff observation csv's
+    write_tdif_obs('model.obs.head.pit.csv', 'heads.tdiff.csv', ws)
 
-        for string, oval, time in zip(obs_sufix,obs_data.loc[:,col].values, obs_data.index.values):
-                if not any(string in obsnme for obsnme in obs_names):
-                    missing.append(string)
-                # if not, then update the pst.observation_data
-                else:
-                    # get a list of obsnames
-                    obsnme = [ks for ks in obs_names if string in ks] 
-                    if type(obsnme) == str:
-                        obsnme=[obsnme]
-                    obsnme = obsnme[0]
-                    if obsnme=='part_time':
-                        oval = pred_data.loc['part_time', 'value']
-                    # assign the obsvals
-                    obs.loc[obsnme,"obsval"] = oval
-                        ## assign a generic weight
-                        #if time > 3652.5 and time <=4018.5:
-                        #    obs.loc[obsnme,"weight"] = 1.0      
-    return 
+    print('Secondary observation files processed.')
+    return
+
+def extract_hds_arrays_and_list_dfs():
+    """
+    Extract head data arrays and list budget dataframes from MODFLOW output files.
+    """
+
+    hds = flopy.utils.HeadFile("model.hds")
+    for it,t in enumerate(hds.get_times()):
+        d = hds.get_data(totim=t)
+        for k,dlay in enumerate(d):
+            np.savetxt("hdslay{0}_t{1}.txt".format(k+1,it+1),d[k,:,:],fmt="%15.6E")
+
+    lst = flopy.utils.Mf6ListBudget("model.lst")
+    inc,cum = lst.get_dataframes(diff=True,start_datetime=None)
+    inc.columns = inc.columns.map(lambda x: x.lower().replace("_","-"))
+    cum.columns = cum.columns.map(lambda x: x.lower().replace("_", "-"))
+    inc.index.name = "totim"
+    cum.index.name = "totim"
+    inc.to_csv("inc.csv")
+    cum.to_csv("cum.csv")
+    return
+
+
 
 
 def prep_bins(dest_path):
@@ -891,7 +881,63 @@ def prep_mc(tmp_d):
     pst.write(os.path.join(tmp_d, 'freyberg_reg.pst'))
     return
 
+def prep_forecasts(pst, model_times=False):
+    pred_csv = os.path.join('..', '..', 'models', 'daily_freyberg_mf6_truth',"pred_data.csv")
+    assert os.path.exists(pred_csv)
+    pred_data = pd.read_csv(pred_csv)
+    pred_data.set_index('site', inplace=True)
+    
+    if type(model_times) == bool:
+        model_times = [float(i) for i in pst.observation_data.time.unique()]
+        
+    ess_obs_data = {}
+    for site in pred_data.index.unique().values:
+        site_obs_data = pred_data.loc[site,:].copy()
+        if isinstance(site_obs_data, pd.Series):
+            site_obs_data.loc["site"] = site_obs_data.index.values
+        if isinstance(site_obs_data, pd.DataFrame):
+            site_obs_data.loc[:,"site"] = site_obs_data.index.values
+            site_obs_data.index = site_obs_data.time
+            sm = site_obs_data.value.rolling(window=20,center=True,min_periods=1).mean()
+            sm_site_obs_data = sm.reindex(model_times,method="nearest")
+        #ess_obs_data.append(pd.DataFrame9sm_site_obs_data)
+        ess_obs_data[site] = sm_site_obs_data
+    obs_data = pd.DataFrame(ess_obs_data)
 
+    obs = pst.observation_data
+    obs_names = [o for o in pst.obs_names if o not in pst.nnz_obs_names]
+
+    # get list of times for obs name suffixes
+    time_str = obs_data.index.map(lambda x: f"time:{x}").values
+    # empyt list to keep track of missing observation names
+    missing=[]
+    for col in obs_data.columns:
+        if col.lower()=='part_time':
+            obs_sufix = col.lower()
+        else:
+        # get obs list suffix for each column of data
+            obs_sufix = col.lower()+"_"+time_str
+        if type(obs_sufix)==str:
+            obs_sufix=[obs_sufix]
+
+        for string, oval, time in zip(obs_sufix,obs_data.loc[:,col].values, obs_data.index.values):
+                if not any(string in obsnme for obsnme in obs_names):
+                    missing.append(string)
+                # if not, then update the pst.observation_data
+                else:
+                    # get a list of obsnames
+                    obsnme = [ks for ks in obs_names if string in ks] 
+                    if type(obsnme) == str:
+                        obsnme=[obsnme]
+                    obsnme = obsnme[0]
+                    if obsnme=='part_time':
+                        oval = pred_data.loc['part_time', 'value']
+                    # assign the obsvals
+                    obs.loc[obsnme,"obsval"] = oval
+                        ## assign a generic weight
+                        #if time > 3652.5 and time <=4018.5:
+                        #    obs.loc[obsnme,"weight"] = 1.0      
+    return 
 
 # if __name__ == "__main__":
     #make_truth(os.path.join('..','models','freyberg_mf6_truth'))
