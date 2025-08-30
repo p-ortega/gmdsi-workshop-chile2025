@@ -15,13 +15,14 @@ dependencies:
   - shapely
   - rtree
   - pyproj>=2.0
-  - pyshp
+  - pyshp<=2.4.1
   - psutil
   - git
   - nbconvert
+  - pip
   - pip:
-       - -e ./dependencies/flopy
-       - -e ./dependencies/pyemu
-       - pypestutils
+       - flopy == 3.9.3
+       - pyemu == 1.3.8
+       - pypestutils == 0.3.0
 
 
