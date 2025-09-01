@@ -55,6 +55,12 @@ def extract_hds_arrays_and_list_dfs():
     cum.columns = cum.columns.map(lambda x: x.lower().replace("_", "-"))
     inc.index.name = "totim"
     cum.index.name = "totim"
+    #one lil trick to help with opt later
+    inc["abstotwel"] = np.abs(inc["wel"]) + np.abs(inc["wel2"])
+    cum["abstotwel"] = np.abs(cum["wel"]) + np.abs(cum["wel2"])
+    inc["totwel"] = inc["wel"] + inc["wel2"]
+    cum["totwel"] = cum["wel"] + cum["wel2"]
+    
     inc.to_csv("inc.csv")
     cum.to_csv("cum.csv")
     return
