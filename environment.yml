@@ -21,8 +21,8 @@ dependencies:
   - nbconvert
   - pip
   - pip:
-       - e ./dependencies/flopy
-       - e ./dependencies/pyemu
+       - -e ./dependencies/flopy
+       - -e ./dependencies/pyemu
        - pypestutils == 0.3.0
 
 
