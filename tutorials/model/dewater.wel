@@ -3,6 +3,7 @@ BEGIN options
   BOUNDNAMES
   PRINT_INPUT
   AUTO_FLOW_REDUCE       0.10000000
+  AUTO_FLOW_REDUCE_CSV FILEOUT dewater.autoreduce.csv
 END options
 
 BEGIN dimensions

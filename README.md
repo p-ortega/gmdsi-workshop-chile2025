@@ -16,18 +16,27 @@ Club Providencia, Av. Pocuro 2878.
 - Pablo Ortega
 - Rodrigo Herrera
 
-## Software
-This workshop consists of jupyter notebooks that use pyemu and pestpp to run all the good stuff from uncertainty analysis to optimization managemnt. This repository is self contained, meaning that all dependencies are included here and you should not needed to install anything else. We encourage everyone to clone this repository and install the environment using:
 
+## Instrucciones de instalación
 
-Este taller está compuesto por Jupyter Notebooks que utilizan [PyEMU](https://github.com/pypest/pyemu) y [PEST++](https://github.com/usgs/pestpp) para realizar desde análisis de incertidumbre hasta optimización automatica (terrible de bkn).
-El repositorio es selfcontained, lo que significa que todas las dependencias necesarias se encuentran incluidas y no será necesario instalar nada adicional (incluso tenemos los ejecutables de modflow). Se recomienda a todos los participantes clonar este repositorio e instalar el environment:
+**Descarga el repositorio del curso:**
 
-```bash
-conda env create -f environment.yml
+Puedes hacerlo de dos maneras:
+ - (1) (más fácil) Descarga el repo como archivo zip desde aquí: [gmdsi-workshop-chile2025](https://github.com/p-ortega/gmdsi-workshop-chile2025). Descomprime la carpeta y trabaja desde ahí.
+ - (2) (recomendado; requiere familiaridad con git). Instala git siguiendo las instrucciones aquí: [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). Regístrate en GitHub y luego clona el repo [gmdsi-workshop-chile2025](https://github.com/p-ortega/gmdsi-workshop-chile2025).
 
-conda activate gmdsi_tut
-```
+**Instala Python y las dependencias:**
+ - Si ya tienes Python instalado usando Anaconda, puedes saltarte este paso. Si no, instala [miniforge](https://github.com/conda-forge/miniforge?tab=readme-ov-file#download).
+ - Si usas __Windows__: ve al menú inicio y abre "Anaconda prompt". Se abrirá una ventana de línea de comandos de anaconda. En __Linux__ o __MacOS__, simplemente usa la terminal estándar. Navega a la carpeta del repo del curso en tu máquina. Hazlo escribiendo "cd *tu ruta de carpeta*" y presionando < enter >. Reemplaza *tu ruta de carpeta* por la ruta donde tienes la carpeta del curso en tu compu.
+ - Luego, escribe `mamba env create -f environment.yml` (o `conda env create -f environment.yml` si `mamba` no te funciona). Esto creará un entorno de anaconda llamado "gmdsitut" e instalará las dependencias de python necesarias para el curso. Puede tardar un rato. Si quieres, puedes revisar el archivo *environment.yml* en la carpeta del repo para ver qué dependencias se van a instalar.
+
+**Inicia jupyter notebook**
+Vas a tener que hacer este paso cada vez que quieras abrir uno de los notebooks del curso.
+Para iniciar el jupyter notebook:
+- Windows: abre el Anaconda prompt y escribe `conda activate gmdsitut`
+- Mac/Linux: abre una terminal y escribe `conda activate gmdsitut`
+- Luego navega a la carpeta donde descargaste el repo del curso y escribe `jupyter notebook`
+Se debería iniciar una instancia de jupyter notebook dentro de la carpeta del repo. Usando el navegador, ahora puedes ir a la carpeta "tutorials", abrir uno ¡y ya estás listo!
 
 ## Schedule
 ### Day 1: Concepts, Theory and Experiences                                                         

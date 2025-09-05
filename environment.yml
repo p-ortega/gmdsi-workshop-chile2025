@@ -21,8 +21,8 @@ dependencies:
   - nbconvert
   - pip
   - pip:
-       - flopy == 3.9.3
-       - git+https://github.com/pypest/pyemu.git@develop
+       - -e ./dependencies/flopy
+       - -e ./dependencies/pyemu
        - pypestutils == 0.3.0
 
 
