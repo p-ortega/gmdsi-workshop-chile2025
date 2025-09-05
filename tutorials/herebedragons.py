@@ -48,13 +48,19 @@ def extract_hds_arrays_and_list_dfs():
     inc.index.name = "totim"
     cum.index.name = "totim"
     #one lil trick to help with opt later
+    rd = pd.read_csv("dewater.autoreduce.csv")
+    summed = rd.groupby("time").sum()["wel-reduction"].to_dict()
     inc["abstotwel"] = np.abs(inc["wel"]) + np.abs(inc["wel2"])
     cum["abstotwel"] = np.abs(cum["wel"]) + np.abs(cum["wel2"])
     inc["totwel"] = inc["wel"] + inc["wel2"]
     cum["totwel"] = cum["wel"] + cum["wel2"]
-    
+    inc["wel-reduction"] = 0.0
+    for t,v in summed.items():
+        inc.loc[t,"wel-reduction"] = v
     inc.to_csv("inc.csv")
     cum.to_csv("cum.csv")
+
+
     return
 
 def prep_bins(dest_path):
