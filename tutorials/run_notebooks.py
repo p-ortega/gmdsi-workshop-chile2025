@@ -45,3 +45,5 @@ run_nb(nb_file, nb_dir)
 nb_file = "04_opt.ipynb"
 run_nb(nb_file, nb_dir)
 
+nb_file = "05_emulators.ipynb"
+run_nb(nb_file, nb_dir)
