@@ -59,8 +59,6 @@ def extract_hds_arrays_and_list_dfs():
         inc.loc[t,"wel-reduction"] = v
     inc.to_csv("inc.csv")
     cum.to_csv("cum.csv")
-
-
     return
 
 def prep_bins(dest_path):
